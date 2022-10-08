@@ -1,0 +1,28 @@
+{
+  "name": "starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Razaul00003/node-farm-NodeJS.git"
+  },
+  "keywords": [
+    "nodeJS"
+  ],
+  "author": "razaul",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Razaul00003/node-farm-NodeJS/issues"
+  },
+  "homepage": "https://github.com/Razaul00003/node-farm-NodeJS#readme",
+  "dependencies": {
+    "slugify": "^1.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

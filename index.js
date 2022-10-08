@@ -45,8 +45,10 @@ const tempCard = fs.readFileSync(
 ///////////////////////////////
 ////SERVER / CLIENT
 const server = http.createServer((req, res) => {
-  const pathName = req.url;
-  if (pathName === "/" || pathName === "/overview") {
+  const { query, pathname } = url.parse(req.url, true);
+
+  //overview page or home page
+  if (pathname === "/" || pathname === "/overview") {
     res.writeHead(200, {
       "Content-type": "text/html",
     });
@@ -55,13 +57,25 @@ const server = http.createServer((req, res) => {
       .join("");
     const output = tempOverview.replace("{%PRODUCT_CARDS%}", cardsHtml);
     res.end(output);
-  } else if (pathName === "/product") {
-    res.end("This is product page");
-  } else if (pathName === "/api") {
+
+    //product page
+  } else if (pathname === "/product") {
+    const product = dataObj[query.id];
+    const output = replaceTemplate(tempProduct, product);
+
+    res.writeHead(200, {
+      "Content-type": "text/html",
+    });
+    res.end(output);
+
+    //api page
+  } else if (pathname === "/api") {
     res.writeHead(200, {
       "Content-type": "application/json",
     });
     res.end(data);
+
+    //error page , not found page
   } else {
     res.writeHead(400, {
       "Content-type": "text/html",
